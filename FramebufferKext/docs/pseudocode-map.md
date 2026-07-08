@@ -88,3 +88,7 @@ Clean-room mapping:
 
 - `ICLFramebufferController::setupClocks`, `enableClocks`, and `disableClocks` update an in-memory `ICLRegisterAccess` model for deterministic tests.
 - Real MMIO, mailbox, power-well, and CD clock addresses/sequences must still be replaced with values from public hardware documentation or independently authored specifications before use on hardware.
+
+## Runtime validation coverage
+
+`tests/CommandFlowTest.cpp` validates the clean-room command flow for port capability/status-adjacent data, stream config, link training, AUX/DPCD, EDID, resource lifecycle, and GPU capability. The tests intentionally validate deterministic model behavior only; real hardware timing and register values still require device-level tests.

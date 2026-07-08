@@ -28,6 +28,7 @@ FramebufferKext/
   src/ICLDisplayPath.hpp                Display path allocation declarations
   src/ICLDisplayPath.cpp                Display path allocation skeleton
   src/ICLRegisterAccess.hpp/.cpp        In-memory MMIO/register access abstraction
+  tests/CommandFlowTest.cpp             Runtime command-flow regression test
   docs/pseudocode-map.md                Mapping from pseudocode areas to clean-room modules
 ```
 
@@ -38,3 +39,8 @@ FramebufferKext/
 3. Keep pipe/path allocation state inside `ICLDisplayPath`.
 4. Add real OS headers and an Xcode project only after the target macOS SDK and deployment model are chosen.
 5. Treat this repository's `.m` pseudocode as reference material only; do not paste proprietary implementation into this scaffold.
+
+## Validation
+
+- `make check` performs strict syntax-only compilation of all production sources.
+- `make test` builds and runs `tests/CommandFlowTest.cpp`, which exercises controller init/start/stop, port capability, stream config, link training, AUX, EDID, resource commit/release, and GPU capability command paths.
